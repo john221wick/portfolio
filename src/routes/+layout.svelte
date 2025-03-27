@@ -1,0 +1,16 @@
+<script>
+	import '../app.css';
+	import Navbar from '$lib/components/Navbar.svelte';
+	import Footer from '$lib/components/Footer.svelte';
+	let { children } = $props();
+</script>
+
+<div class="flex min-h-screen flex-col bg-[#1e1e1e] text-[#f5f5f5]">
+	<div class="mx-auto w-full max-w-[800px] p-8">
+		<Navbar />
+		<main class="flex flex-grow flex-col items-center justify-center text-center">
+			{@render children()}
+		</main>
+		<Footer />
+	</div>
+</div>
