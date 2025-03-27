@@ -1,5 +1,6 @@
 <script>
 	import { marked } from 'marked';
+	import { preventDefault } from 'svelte/legacy';
 
 	let posts = [
 		{
@@ -52,7 +53,10 @@
 					<span class="mr-4 min-w-[120px] text-sm text-gray-500">{date}</span>
 					<a
 						{href}
-						on:click|preventDefault={() => loadMarkdown(href)}
+						onclick={(e) => {
+							e.preventDefault();
+							loadMarkdown(href);
+						}}
 						class="font-bold text-inherit no-underline hover:underline"
 					>
 						{title}
@@ -61,7 +65,7 @@
 						href={certHref}
 						target="_blank"
 						rel="noopener noreferrer"
-						class="ml-auto text-blue-500 hover:underline"
+						class="ml-auto text-blue-400 hover:underline"
 					>
 						Certificate
 					</a>
