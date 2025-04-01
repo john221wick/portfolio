@@ -1,10 +1,12 @@
 <script>
 	import { marked } from 'marked';
+	import Prism from 'prismjs';
+	import 'prismjs/themes/prism-tomorrow.css';
 	let posts = [
 		{
-			date: 'April 9, 2024',
-			title: 'Embracing Svelte 5: Reactive Programming Redefined',
-			href: 'test.md'
+			date: 'July, 2023',
+			title: 'Bash Scripting',
+			href: 'data/devops/bash-scripting.md'
 		},
 		{
 			date: 'May 15, 2024',
@@ -28,6 +30,7 @@
 			}
 			const text = await res.text();
 			markdownContent = marked.parse(text);
+			Prism.highlightAll();
 		} catch (err) {
 			console.error('Error loading Markdown:', err);
 			markdownContent = 'Failed to load content.';
@@ -36,7 +39,9 @@
 </script>
 
 {#if markdownContent}
-	<div class="mt-5 border-t p-5">
+	<div
+		class="mx-auto max-w-2xl rounded-lg bg-white p-6 text-left leading-relaxed text-gray-800 shadow-md"
+	>
 		{@html markdownContent}
 	</div>
 {:else}

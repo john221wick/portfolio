@@ -1,19 +1,5 @@
 <script>
-	let markdownContent = '';
-	import { onMount } from 'svelte';
-	import { marked } from 'marked';
-	onMount(async () => {
-		try {
-			const res = await fetch('/test.md');
-			const text = await res.text();
-			markdownContent = marked.parse(text);
-		} catch (err) {
-			console.error('Error loading Markdown:', err);
-			markdownContent = 'Failed to load content.';
-		}
-	});
+	import Frontpage from '$lib/components/Frontpage.svelte';
 </script>
 
-<div>
-	{@html markdownContent}
-</div>
+<Frontpage />
