@@ -1,7 +1,15 @@
 <script>
 	import { marked } from 'marked';
 	import Prism from 'prismjs';
+	import { onMount } from 'svelte';
 	import 'prismjs/themes/prism-tomorrow.css';
+	import 'prismjs/plugins/autoloader/prism-autoloader';
+
+	// For DYnamically deciding the language
+	onMount(() => {
+		Prism.plugins.autoloader.languages_path =
+			'https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/';
+	});
 	let posts = [
 		{
 			date: 'July, 2023',
@@ -30,18 +38,27 @@
 			}
 			const text = await res.text();
 			markdownContent = marked.parse(text);
-			Prism.highlightAll();
 		} catch (err) {
 			console.error('Error loading Markdown:', err);
 			markdownContent = 'Failed to load content.';
 		}
 	}
+
+	// To ensure syntax highlighting after DOM update
+	$effect(() => {
+		if (markdownContent) {
+			setTimeout(() => {
+				const codeBlocks = document.querySelectorAll('pre code');
+				codeBlocks.forEach((block) => {
+					Prism.highlightElement(block);
+				});
+			}, 0);
+		}
+	});
 </script>
 
 {#if markdownContent}
-	<div
-		class="mx-auto max-w-2xl rounded-lg bg-white p-6 text-left leading-relaxed text-gray-800 shadow-md"
-	>
+	<div class="max-w-20xl text-white-800 mx-auto rounded-lg p-8 text-left leading-relaxed shadow-md">
 		{@html markdownContent}
 	</div>
 {:else}
