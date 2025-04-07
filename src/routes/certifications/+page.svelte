@@ -1,29 +1,109 @@
 <script>
 	import { marked } from 'marked';
-	import { preventDefault } from 'svelte/legacy';
+	import Prism from 'prismjs';
+	import { onMount } from 'svelte';
+	import 'prismjs/themes/prism-tomorrow.css';
+	import 'prismjs/plugins/autoloader/prism-autoloader';
+
+	// For DYnamically deciding the language
+	onMount(() => {
+		Prism.plugins.autoloader.languages_path =
+			'https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/';
+	});
+
+	let postsUpcoming = [
+		{
+			date: 'June, 2025 (tentatively)',
+			title: 'GPU Architecture and Programming (IIT Kharagpur)',
+			href: '/test.md',
+			certHref: ''
+		},
+		{
+			date: 'June, 2025 (tentatively)',
+			title: 'Large Language Model (IIT Kharagpur)',
+			href: '/test.md',
+			certHref: ''
+		},
+		{
+			date: 'June, 2025 (tentatively)',
+			title: 'Foundation of Cloud IoT Edge ML (IIT Patna)',
+			href: '/test.md',
+			certHref: ''
+		}
+	];
 
 	let posts = [
 		{
 			date: 'April 9, 2024',
-			title: 'Embracing Svelte 5: Reactive Programming Redefined',
+			title: 'Applied Accelerated Artificial Intelligence (IIT Palakkad) (NVIDIA)',
 			href: '/test.md',
-			certHref: '/certifications/svelte5-reactive.pdf'
+			certHref: 'https://drive.google.com/file/d/1sNASrD4_2LE5u9BvUOe6iFoc1xcM33J5/view?usp=sharing'
 		},
 		{
 			date: 'May 15, 2024',
-			title: 'Svelte 5 Runes: A Game Changer for Developers',
-			href: '/post/svelte5/runes.md',
-			certHref: '/certifications/svelte5-runes.pdf'
+			title: 'Linear algebra through Geometry (IISc Banglore) (one of the best course)',
+			href: '/test.md',
+			certHref: 'https://drive.google.com/file/d/1sQ1ao9MML9DGDTPgLIkNoN_8ZpAeX3e8/view?usp=sharing'
 		},
 		{
-			date: 'June 22, 2024',
-			title: 'Why Svelte 5’s Simplicity Wins Over Complexity',
-			href: '/post/svelte5/simplicity.md',
-			certHref: '/certifications/svelte5-simplicity.pdf'
+			date: 'November, 2022',
+			title: 'Deep Learning (IIT Ropar)',
+			href: '/test.md',
+			certHref: 'https://drive.google.com/file/d/1MQ6OE30keXZi5iFZ8qNmST9ob8cBcn23/view?usp=sharing'
+		},
+		{
+			date: 'April, 2023',
+			title: 'BlockChain and its application (IIT Kharagpur)',
+			href: '/test.md',
+			certHref: 'https://drive.google.com/file/d/17TjADjJWDIpLPIvcVod_I3EiohaN1bs2/view?usp=sharing'
+		}
+	];
+	let postsCCompletion = [
+		{
+			date: 'Aug 8, 2023',
+			title: 'Serverless Computing with AWS Lambda',
+			href: '/test.md',
+			certHref: 'https://drive.google.com/file/d/1pcBgDiBktK4wSO91YkX_oEG95uHkTtHK/view?usp=sharing'
+		},
+		{
+			date: 'May 29, 2023',
+			title: 'Docker Training Course',
+			href: '/test.md',
+			certHref: 'https://drive.google.com/file/d/1hX9188cnPLV5FhF3ORVrXjYvPgaK4lfc/view?usp=sharing'
+		},
+		{
+			date: 'August 22, 2023',
+			title: 'Linux Course',
+			href: '/post/svelte5/runes.md',
+			certHref: 'https://drive.google.com/file/d/15gthFFfQG-7AtyK3CKKojysPLN19fSfI/view?usp=sharing'
+		},
+		{
+			date: 'January, 2024',
+			title: 'CI/CD with Github actions',
+			href: '/test.md',
+			certHref: 'https://drive.google.com/file/d/15gthFFfQG-7AtyK3CKKojysPLN19fSfI/view?usp=sharing'
+		},
+		{
+			date: 'August 28, 2023',
+			title: 'Shell Programming (Bash)',
+			href: '/test.md',
+			certHref: 'https://drive.google.com/file/d/1iqvRKZ-0Se7YdxJ3Ix4CQqRl53qY5_P3/view?usp=sharing'
+		},
+		{
+			date: 'August 28, 2023',
+			title: 'Git and Github',
+			href: '/test.md',
+			certHref: 'https://drive.google.com/file/d/1N12gQIwJPEHUtVZhEdqbc1JI43r5u112/view?usp=sharing'
+		},
+		{
+			date: 'June 27, 2023',
+			title: 'Try Hack Me (Pre Security Learning Path)',
+			href: '/test.md',
+			certHref: 'https://drive.google.com/file/d/1BWmUjpT0vEYf6xWWVT8wdaNmOX5aEipU/view?usp=sharing'
 		}
 	];
 
-	let markdownContent = '';
+	let markdownContent = $state();
 
 	async function loadMarkdown(path) {
 		try {
@@ -38,6 +118,18 @@
 			markdownContent = 'Failed to load content.';
 		}
 	}
+
+	// To ensure syntax highlighting after DOM update
+	$effect(() => {
+		if (markdownContent) {
+			setTimeout(() => {
+				const codeBlocks = document.querySelectorAll('pre code');
+				codeBlocks.forEach((block) => {
+					Prism.highlightElement(block);
+				});
+			}, 0);
+		}
+	});
 </script>
 
 {#if markdownContent}
@@ -46,9 +138,65 @@
 	</div>
 {:else}
 	<div class="flex flex-col items-center p-5">
-		<h2 class="mb-5 text-2xl font-bold">Practicing</h2>
+		<h2 class="mb-5 text-2xl font-bold">Upcoming</h2>
+		<ul class="w-full max-w-[600px] list-none p-0">
+			{#each postsUpcoming as { date, title, href, certHref } (title)}
+				<li class="mb-2.5 flex items-baseline">
+					<span class="mr-4 min-w-[120px] text-sm text-gray-500">{date}</span>
+					<a
+						{href}
+						onclick={(e) => {
+							e.preventDefault();
+							loadMarkdown(href);
+						}}
+						class="font-bold text-inherit no-underline hover:underline"
+					>
+						{title}
+					</a>
+					<a
+						href={certHref}
+						target="_blank"
+						rel="noopener noreferrer"
+						class="ml-auto text-blue-400 hover:underline"
+					>
+						Certificate
+					</a>
+				</li>
+			{/each}
+		</ul>
+	</div>
+	<div class="flex flex-col items-center p-5">
+		<h2 class="mb-5 text-2xl font-bold">Certifications</h2>
 		<ul class="w-full max-w-[600px] list-none p-0">
 			{#each posts as { date, title, href, certHref } (title)}
+				<li class="mb-2.5 flex items-baseline">
+					<span class="mr-4 min-w-[120px] text-sm text-gray-500">{date}</span>
+					<a
+						{href}
+						onclick={(e) => {
+							e.preventDefault();
+							loadMarkdown(href);
+						}}
+						class="font-bold text-inherit no-underline hover:underline"
+					>
+						{title}
+					</a>
+					<a
+						href={certHref}
+						target="_blank"
+						rel="noopener noreferrer"
+						class="ml-auto text-blue-400 hover:underline"
+					>
+						Certificate
+					</a>
+				</li>
+			{/each}
+		</ul>
+	</div>
+	<div class="flex flex-col items-center p-5">
+		<h2 class="mb-5 text-2xl font-bold">Course Completion</h2>
+		<ul class="w-full max-w-[600px] list-none p-0">
+			{#each postsCCompletion as { date, title, href, certHref } (title)}
 				<li class="mb-2.5 flex items-baseline">
 					<span class="mr-4 min-w-[120px] text-sm text-gray-500">{date}</span>
 					<a
