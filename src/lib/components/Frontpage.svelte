@@ -17,7 +17,7 @@
 				</p>
 				<p>
 					Note: This portfolio is under development, some links are not available, I will be
-					updating it soon
+					updating it soon.
 				</p>
 			</div>
 		</section>
