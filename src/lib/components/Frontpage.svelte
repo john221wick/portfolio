@@ -12,8 +12,12 @@
 				</p>
 
 				<p>
-					Working with machine learning (GNN, deep learning, AI agents)<br />
+					Working with MLOps, AI Agents, Building LLM etc<br />
 					and exploring DevOps ecosystems
+				</p>
+				<p>
+					Note: This portfolio is under development, some links are not available, I will be
+					updating it soon
 				</p>
 			</div>
 		</section>
