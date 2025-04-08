@@ -10,21 +10,61 @@
 		Prism.plugins.autoloader.languages_path =
 			'https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/';
 	});
-	let posts = [
+	let projectsOngoing = [
 		{
-			date: 'July, 2023',
-			title: 'Bash Scripting',
+			date: '2025',
+			title: 'Agentic CI/CD',
+			href: 'https://github.com/bbl-sh/ke-automated-ci-cd'
+		},
+		{
+			date: '2025',
+			title: 'Leetcode clone',
 			href: 'data/devops/bash-scripting.md'
 		},
 		{
-			date: 'May 15, 2024',
-			title: 'Svelte 5 Runes: A Game Changer for Developers',
-			href: '/post/svelte5/runes.md'
+			date: '2025',
+			title: 'Building JUDGE0 api via Docker',
+			href: 'https://github.com/bbl-sh/dg-projects'
 		},
 		{
-			date: 'June 22, 2024',
-			title: 'Why Svelte 5’s Simplicity Wins Over Complexity',
+			date: '2024',
+			title: 'Github actions and Terraform',
+			href: 'https://github.com/bbl-sh/actions-01'
+		},
+		{
+			date: '2024',
+			title: 'Hugging Face Library',
+			href: 'https://github.com/bbl-sh/literate-invention/tree/main/hugging-face/nlp'
+		},
+		{
+			date: '2025',
+			title: 'Building CodeCrafters Clone',
+			href: 'https://github.com/bbl-sh/ccraft'
+		},
+		{
+			date: 'will be updated',
+			title: 'Making miniGPT',
+			href: 'https://github.com/bbl-sh/making-minigpt'
+		},
+		{
+			date: '2024',
+			title: 'Training miniGPT over Pytorch Distributed',
 			href: '/post/svelte5/simplicity.md'
+		},
+		{
+			date: '2024',
+			title: 'Basics of Golang',
+			href: 'https://github.com/bbl-sh/golang'
+		},
+		{
+			date: '2023',
+			title: 'Implementing RDT 3.0, tcp etc protocol in python',
+			href: 'https://github.com/bbl-sh/computer-networks'
+		},
+		{
+			date: '2022',
+			title: 'Basics of pytorch',
+			href: 'https://github.com/bbl-sh/pytorch-basics'
 		}
 	];
 
@@ -63,38 +103,11 @@
 	</div>
 {:else}
 	<div class="flex flex-col items-center p-5">
-		<h2 class="mb-5 text-2xl font-bold">Reading</h2>
 		<ul class="w-full max-w-[600px] list-none p-0">
-			{#each posts as { date, title, href } (title)}
+			{#each projectsOngoing as { date, title, href } (title)}
 				<li class="mb-2.5 flex items-baseline">
 					<span class="mr-4 min-w-[120px] text-sm text-gray-500">{date}</span>
-					<a
-						{href}
-						onclick={(e) => {
-							e.preventDefault();
-							loadMarkdown(href);
-						}}
-						class="font-bold text-inherit no-underline hover:underline"
-					>
-						{title}
-					</a>
-				</li>
-			{/each}
-		</ul>
-
-		<h2 class="mb-5 text-2xl font-bold">Practicing</h2>
-		<ul class="w-full max-w-[600px] list-none p-0">
-			{#each posts as { date, title, href } (title)}
-				<li class="mb-2.5 flex items-baseline">
-					<span class="mr-4 min-w-[120px] text-sm text-gray-500">{date}</span>
-					<a
-						{href}
-						onclick={(e) => {
-							e.preventDefault();
-							loadMarkdown(href);
-						}}
-						class="font-bold text-inherit no-underline hover:underline"
-					>
+					<a {href} class="font-bold text-inherit no-underline hover:underline">
 						{title}
 					</a>
 				</li>

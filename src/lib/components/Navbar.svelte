@@ -13,7 +13,7 @@
 	>
 		home</button
 	>
-	<button
+	<!-- <button
 		onclick={() => handleClick('/blogs-ai')}
 		class="no-underline opacity-70 transition-opacity duration-200 hover:opacity-100"
 	>
@@ -24,7 +24,7 @@
 		class="no-underline opacity-70 transition-opacity duration-200 hover:opacity-100"
 	>
 		DevOps Blogs</button
-	>
+	> -->
 	<button
 		onclick={() => handleClick('/blogs-others')}
 		class="no-underline opacity-70 transition-opacity duration-200 hover:opacity-100"
