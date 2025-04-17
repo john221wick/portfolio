@@ -6,41 +6,43 @@
 	}
 </script>
 
-<nav class="mb-20 flex w-full items-center justify-center gap-8">
-	<button
+<nav class="mb-20 flex w-full flex-col items-center justify-center gap-4 md:flex-row md:gap-8">
+	<div
 		onclick={() => handleClick('/')}
-		class="no-underline opacity-70 transition-opacity duration-200 hover:opacity-100"
+		class="cursor-pointer no-underline opacity-70 transition-opacity duration-200 hover:opacity-100"
 	>
-		home</button
-	>
-	<!-- <button
+		home
+	</div>
+	<div
 		onclick={() => handleClick('/blogs-ai')}
-		class="no-underline opacity-70 transition-opacity duration-200 hover:opacity-100"
+		class="cursor-pointer no-underline opacity-70 transition-opacity duration-200 hover:opacity-100"
 	>
-		AI Blogs</button
-	>
-	<button
+		AI Blogs
+	</div>
+	<div
 		onclick={() => handleClick('/blogs-devops')}
-		class="no-underline opacity-70 transition-opacity duration-200 hover:opacity-100"
+		class="cursor-pointer no-underline opacity-70 transition-opacity duration-200 hover:opacity-100"
 	>
-		DevOps Blogs</button
-	> -->
-	<button
+		DevOps Blogs
+	</div>
+	<div
 		onclick={() => handleClick('/blogs-others')}
-		class="no-underline opacity-70 transition-opacity duration-200 hover:opacity-100"
+		class="cursor-pointer no-underline opacity-70 transition-opacity duration-200 hover:opacity-100"
 	>
-		Blogs</button
-	>
-	<button
+		Blogs
+	</div>
+	<div
 		onclick={() => handleClick('/projects')}
-		class="no-underline opacity-70 transition-opacity duration-200 hover:opacity-100"
+		class="cursor-pointer no-underline opacity-70 transition-opacity duration-200 hover:opacity-100"
 	>
-		Projects</button
+		Projects
+	</div>
+	<div
+		onclick={() => {
+			handleClick('/certifications');
+		}}
+		class="cursor-pointer no-underline opacity-70 transition-opacity duration-200 hover:opacity-100"
 	>
-	<button
-		onclick={() => handleClick('/certifications')}
-		class="no-underline opacity-70 transition-opacity duration-200 hover:opacity-100"
-	>
-		Certifications</button
-	>
+		Certifications
+	</div>
 </nav>
