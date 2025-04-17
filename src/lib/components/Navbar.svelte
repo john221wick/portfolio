@@ -6,7 +6,7 @@
 	}
 </script>
 
-<nav class="mb-20 flex w-full flex-col items-center justify-center gap-4 md:flex-row md:gap-8">
+<nav class="mb-20 flex w-full items-center justify-center gap-4 overflow-x-auto md:gap-8">
 	<div
 		onclick={() => handleClick('/')}
 		class="cursor-pointer no-underline opacity-70 transition-opacity duration-200 hover:opacity-100"
@@ -38,9 +38,7 @@
 		Projects
 	</div>
 	<div
-		onclick={() => {
-			handleClick('/certifications');
-		}}
+		onclick={() => handleClick('/certifications')}
 		class="cursor-pointer no-underline opacity-70 transition-opacity duration-200 hover:opacity-100"
 	>
 		Certifications
