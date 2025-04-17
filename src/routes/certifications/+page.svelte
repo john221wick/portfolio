@@ -5,7 +5,6 @@
 	import 'prismjs/themes/prism-tomorrow.css';
 	import 'prismjs/plugins/autoloader/prism-autoloader';
 
-	// For DYnamically deciding the language
 	onMount(() => {
 		Prism.plugins.autoloader.languages_path =
 			'https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/';
@@ -58,6 +57,7 @@
 			certHref: 'https://drive.google.com/file/d/17TjADjJWDIpLPIvcVod_I3EiohaN1bs2/view?usp=sharing'
 		}
 	];
+
 	let postsCCompletion = [
 		{
 			date: 'Aug 8, 2023',
@@ -115,11 +115,10 @@
 			markdownContent = marked.parse(text);
 		} catch (err) {
 			console.error('Error loading Markdown:', err);
-			markdownContent = 'Failed to load content.';
+			markdownContent = '<p class="text-red-500">Failed to load content.</p>';
 		}
 	}
 
-	// To ensure syntax highlighting after DOM update
 	$effect(() => {
 		if (markdownContent) {
 			setTimeout(() => {
@@ -133,90 +132,104 @@
 </script>
 
 {#if markdownContent}
-	<div class="mt-5 border-t p-5">
-		{@html markdownContent}
+	<div class="mx-auto mt-5 max-w-2xl border-t p-5">
+		<div class="prose prose-invert max-w-none text-sm sm:text-base">
+			{@html markdownContent}
+		</div>
 	</div>
 {:else}
 	<div class="flex flex-col items-center p-5">
-		<h2 class="mb-5 text-2xl font-bold">Upcoming</h2>
+		<h2 class="mb-5 text-xl font-bold sm:text-2xl md:text-3xl">Upcoming</h2>
 		<ul class="w-full max-w-[600px] list-none p-0">
 			{#each postsUpcoming as { date, title, href, certHref } (title)}
 				<li class="mb-2.5 flex items-baseline">
-					<span class="mr-4 min-w-[120px] text-sm text-gray-500">{date}</span>
+					<span class="mr-4 min-w-[120px] text-[10px] text-gray-500 sm:text-xs md:text-sm"
+						>{date}</span
+					>
 					<a
 						{href}
 						onclick={(e) => {
 							e.preventDefault();
 							loadMarkdown(href);
 						}}
-						class="font-bold text-inherit no-underline hover:underline"
+						class="text-xs font-bold text-inherit no-underline hover:underline sm:text-sm md:text-base"
 					>
 						{title}
 					</a>
-					<a
-						href={certHref}
-						target="_blank"
-						rel="noopener noreferrer"
-						class="ml-auto text-blue-400 hover:underline"
-					>
-						Certificate
-					</a>
+					{#if certHref}
+						<a
+							href={certHref}
+							target="_blank"
+							rel="noopener noreferrer"
+							class="ml-auto text-xs text-blue-400 hover:underline sm:text-sm md:text-base"
+						>
+							Certificate
+						</a>
+					{/if}
 				</li>
 			{/each}
 		</ul>
 	</div>
 	<div class="flex flex-col items-center p-5">
-		<h2 class="mb-5 text-2xl font-bold">Certifications</h2>
+		<h2 class="mb-5 text-xl font-bold sm:text-2xl md:text-3xl">Certifications</h2>
 		<ul class="w-full max-w-[600px] list-none p-0">
 			{#each posts as { date, title, href, certHref } (title)}
 				<li class="mb-2.5 flex items-baseline">
-					<span class="mr-4 min-w-[120px] text-sm text-gray-500">{date}</span>
+					<span class="mr-4 min-w-[120px] text-[10px] text-gray-500 sm:text-xs md:text-sm"
+						>{date}</span
+					>
 					<a
 						{href}
 						onclick={(e) => {
 							e.preventDefault();
 							loadMarkdown(href);
 						}}
-						class="font-bold text-inherit no-underline hover:underline"
+						class="text-xs font-bold text-inherit no-underline hover:underline sm:text-sm md:text-base"
 					>
 						{title}
 					</a>
-					<a
-						href={certHref}
-						target="_blank"
-						rel="noopener noreferrer"
-						class="ml-auto text-blue-400 hover:underline"
-					>
-						Certificate
-					</a>
+					{#if certHref}
+						<a
+							href={certHref}
+							target="_blank"
+							rel="noopener noreferrer"
+							class="ml-auto text-xs text-blue-400 hover:underline sm:text-sm md:text-base"
+						>
+							Certificate
+						</a>
+					{/if}
 				</li>
 			{/each}
 		</ul>
 	</div>
 	<div class="flex flex-col items-center p-5">
-		<h2 class="mb-5 text-2xl font-bold">Course Completion</h2>
+		<h2 class="mb-5 text-xl font-bold sm:text-2xl md:text-3xl">Course Completion</h2>
 		<ul class="w-full max-w-[600px] list-none p-0">
 			{#each postsCCompletion as { date, title, href, certHref } (title)}
 				<li class="mb-2.5 flex items-baseline">
-					<span class="mr-4 min-w-[120px] text-sm text-gray-500">{date}</span>
+					<span class="mr-4 min-w-[120px] text-[10px] text-gray-500 sm:text-xs md:text-sm"
+						>{date}</span
+					>
 					<a
 						{href}
 						onclick={(e) => {
 							e.preventDefault();
 							loadMarkdown(href);
 						}}
-						class="font-bold text-inherit no-underline hover:underline"
+						class="text-xs font-bold text-inherit no-underline hover:underline sm:text-sm md:text-base"
 					>
 						{title}
 					</a>
-					<a
-						href={certHref}
-						target="_blank"
-						rel="noopener noreferrer"
-						class="ml-auto text-blue-400 hover:underline"
-					>
-						Certificate
-					</a>
+					{#if certHref}
+						<a
+							href={certHref}
+							target="_blank"
+							rel="noopener noreferrer"
+							class="ml-auto text-xs text-blue-400 hover:underline sm:text-sm md:text-base"
+						>
+							Certificate
+						</a>
+					{/if}
 				</li>
 			{/each}
 		</ul>

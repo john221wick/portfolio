@@ -95,15 +95,13 @@
 </script>
 
 {#if markdownContent}
-	<div
-		class="text-white-800 mx-auto max-w-2xl rounded-lg p-4 text-left leading-relaxed shadow-md sm:p-8"
-	>
+	<div class="text-white-800 max-w-2xl rounded-lg p-4 text-left leading-relaxed shadow-md sm:p-8">
 		<div class="prose prose-invert max-w-none">
 			{@html markdownContent}
 		</div>
 	</div>
 {:else}
-	<div class="flex flex-col items-center p-3 sm:p-5">
+	<div class="flex flex-col items-center p-3">
 		<ul class="w-full max-w-[600px] list-none p-0">
 			{#each projectsOngoing as { date, title, href } (title)}
 				<li class="mb-2 flex flex-wrap items-baseline">

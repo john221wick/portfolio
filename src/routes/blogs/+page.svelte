@@ -53,10 +53,8 @@
 </script>
 
 {#if markdownContent}
-	<div
-		class="text-white-800 mx-auto max-w-2xl rounded-lg p-4 text-left leading-relaxed shadow-md sm:p-8"
-	>
-		<div class="prose prose-invert max-w-none">
+	<div class="max-w-2xl rounded-lg p-4 shadow-md sm:p-8">
+		<div class="prose prose-invert max-w-none text-sm sm:text-base">
 			{@html markdownContent}
 		</div>
 	</div>
