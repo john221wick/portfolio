@@ -14,18 +14,6 @@
 		home
 	</div>
 	<div
-		onclick={() => handleClick('/blogs-ai')}
-		class="cursor-pointer no-underline opacity-70 transition-opacity duration-200 hover:opacity-100"
-	>
-		AI Blogs
-	</div>
-	<div
-		onclick={() => handleClick('/blogs-devops')}
-		class="cursor-pointer no-underline opacity-70 transition-opacity duration-200 hover:opacity-100"
-	>
-		DevOps Blogs
-	</div>
-	<div
 		onclick={() => handleClick('/blogs-others')}
 		class="cursor-pointer no-underline opacity-70 transition-opacity duration-200 hover:opacity-100"
 	>
