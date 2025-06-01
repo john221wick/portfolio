@@ -49,7 +49,7 @@
 		},
 		{
 			techStack: '2023',
-			title: 'Implementing RDT 3.0, tcp etc protocol in python',
+			title: 'Implementing RDT 3.0, tcp etc protocol',
 			href: 'https://github.com/bbl-sh/computer-networks'
 		},
 		{
