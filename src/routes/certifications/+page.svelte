@@ -10,28 +10,19 @@
 			'https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/';
 	});
 
-	let postsUpcoming = [
+	let posts = [
 		{
-			date: 'June, 2025 (tentatively)',
+			date: 'April 28, 2025',
 			title: 'GPU Architecture and Programming (IIT Kharagpur)',
 			href: '/test.md',
-			certHref: ''
+			certHref: 'a'
 		},
 		{
-			date: 'June, 2025 (tentatively)',
+			date: 'April 28, 2025',
 			title: 'Large Language Model (IIT Kharagpur)',
 			href: '/test.md',
-			certHref: ''
+			certHref: 'a'
 		},
-		{
-			date: 'June, 2025 (tentatively)',
-			title: 'Foundation of Cloud IoT Edge ML (IIT Patna)',
-			href: '/test.md',
-			certHref: ''
-		}
-	];
-
-	let posts = [
 		{
 			date: 'April 9, 2024',
 			title: 'Applied Accelerated Artificial Intelligence (IIT Palakkad) (NVIDIA)',
@@ -131,107 +122,63 @@
 	});
 </script>
 
-{#if markdownContent}
-	<div class="mx-auto mt-5 max-w-2xl border-t p-5">
-		<div class="prose prose-invert max-w-none text-sm sm:text-base">
-			{@html markdownContent}
-		</div>
-	</div>
-{:else}
-	<div class="flex flex-col items-center p-5">
-		<h2 class="mb-5 text-xl font-bold sm:text-2xl md:text-3xl">Upcoming</h2>
-		<ul class="w-full max-w-[600px] list-none p-0">
-			{#each postsUpcoming as { date, title, href, certHref } (title)}
-				<li class="mb-2.5 flex items-baseline">
-					<span class="mr-4 min-w-[120px] text-[10px] text-gray-500 sm:text-xs md:text-sm"
-						>{date}</span
-					>
+<div class="p-5">
+	<h2 class="mb-5 text-xl font-bold sm:text-2xl md:text-3xl">Certifications</h2>
+	<ul class="mb-8 list-none">
+		{#each posts as { date, title, href, certHref } (title)}
+			<li class="mb-2.5 grid grid-cols-1 items-center gap-2 sm:grid-cols-3">
+				<span class="text-left text-xs text-gray-500">{date}</span>
+				<a
+					{href}
+					onclick={(e) => {
+						e.preventDefault();
+						loadMarkdown(href);
+					}}
+					class="text-left text-sm font-bold text-inherit no-underline hover:underline sm:text-center"
+				>
+					{title}
+				</a>
+				{#if certHref}
 					<a
-						{href}
-						onclick={(e) => {
-							e.preventDefault();
-							loadMarkdown(href);
-						}}
-						class="text-xs font-bold text-inherit no-underline hover:underline sm:text-sm md:text-base"
+						href={certHref}
+						target="_blank"
+						rel="noopener noreferrer"
+						class="text-left text-xs text-blue-400 hover:underline sm:text-right"
 					>
-						{title}
+						Certificate
 					</a>
-					{#if certHref}
-						<a
-							href={certHref}
-							target="_blank"
-							rel="noopener noreferrer"
-							class="ml-auto text-xs text-blue-400 hover:underline sm:text-sm md:text-base"
-						>
-							Certificate
-						</a>
-					{/if}
-				</li>
-			{/each}
-		</ul>
-	</div>
-	<div class="flex flex-col items-center p-5">
-		<h2 class="mb-5 text-xl font-bold sm:text-2xl md:text-3xl">Certifications</h2>
-		<ul class="w-full max-w-[600px] list-none p-0">
-			{#each posts as { date, title, href, certHref } (title)}
-				<li class="mb-2.5 flex items-baseline">
-					<span class="mr-4 min-w-[120px] text-[10px] text-gray-500 sm:text-xs md:text-sm"
-						>{date}</span
-					>
+				{/if}
+			</li>
+		{/each}
+	</ul>
+</div>
+<div class="p-5">
+	<h2 class="mb-5 text-xl font-bold sm:text-2xl md:text-3xl">Course Completion</h2>
+	<ul class="mb-8 list-none">
+		{#each postsCCompletion as { date, title, href, certHref } (title)}
+			<li class="mb-2.5 grid grid-cols-1 items-center gap-2 sm:grid-cols-3">
+				<span class="text-left text-xs text-gray-500">{date}</span>
+				<a
+					{href}
+					onclick={(e) => {
+						e.preventDefault();
+						loadMarkdown(href);
+					}}
+					class="text-left text-sm font-bold text-inherit no-underline hover:underline sm:text-center"
+				>
+					{title}
+				</a>
+				{#if certHref}
 					<a
-						{href}
-						onclick={(e) => {
-							e.preventDefault();
-							loadMarkdown(href);
-						}}
-						class="text-xs font-bold text-inherit no-underline hover:underline sm:text-sm md:text-base"
+						href={certHref}
+						target="_blank"
+						rel="noopener noreferrer"
+						class="text-left text-xs text-blue-400 hover:underline sm:text-right"
 					>
-						{title}
+						Certificate
 					</a>
-					{#if certHref}
-						<a
-							href={certHref}
-							target="_blank"
-							rel="noopener noreferrer"
-							class="ml-auto text-xs text-blue-400 hover:underline sm:text-sm md:text-base"
-						>
-							Certificate
-						</a>
-					{/if}
-				</li>
-			{/each}
-		</ul>
-	</div>
-	<div class="flex flex-col items-center p-5">
-		<h2 class="mb-5 text-xl font-bold sm:text-2xl md:text-3xl">Course Completion</h2>
-		<ul class="w-full max-w-[600px] list-none p-0">
-			{#each postsCCompletion as { date, title, href, certHref } (title)}
-				<li class="mb-2.5 flex items-baseline">
-					<span class="mr-4 min-w-[120px] text-[10px] text-gray-500 sm:text-xs md:text-sm"
-						>{date}</span
-					>
-					<a
-						{href}
-						onclick={(e) => {
-							e.preventDefault();
-							loadMarkdown(href);
-						}}
-						class="text-xs font-bold text-inherit no-underline hover:underline sm:text-sm md:text-base"
-					>
-						{title}
-					</a>
-					{#if certHref}
-						<a
-							href={certHref}
-							target="_blank"
-							rel="noopener noreferrer"
-							class="ml-auto text-xs text-blue-400 hover:underline sm:text-sm md:text-base"
-						>
-							Certificate
-						</a>
-					{/if}
-				</li>
-			{/each}
-		</ul>
-	</div>
-{/if}
+				{/if}
+			</li>
+		{/each}
+	</ul>
+</div>
