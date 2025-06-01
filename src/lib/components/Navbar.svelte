@@ -18,16 +18,6 @@
 		home
 	</a>
 	<a
-		href="/blogs"
-		onclick={(e) => {
-			e.preventDefault();
-			handleClick('/blogs');
-		}}
-		class="cursor-pointer no-underline opacity-70 transition-opacity duration-200 hover:opacity-100"
-	>
-		blogs
-	</a>
-	<a
 		href="/projects"
 		onclick={(e) => {
 			e.preventDefault();
