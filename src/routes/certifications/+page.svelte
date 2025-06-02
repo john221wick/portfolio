@@ -2,6 +2,7 @@
 	import { marked } from 'marked';
 	import Prism from 'prismjs';
 	import { onMount } from 'svelte';
+	import { page } from '$app/stores';
 	import 'prismjs/themes/prism-tomorrow.css';
 	import 'prismjs/plugins/autoloader/prism-autoloader';
 
@@ -94,8 +95,19 @@
 		}
 	];
 
-	let markdownContent = $state();
+	let markdownContent = $state(null);
 
+	$effect(() => {
+		// Inorder to load the certificated page if clicked on certifications
+		const unsubscribe = page.subscribe((p) => {
+			if (p.url.pathname === '/certifications') {
+				markdownContent = null;
+			}
+		});
+		return unsubscribe;
+	});
+
+	// Function to load markdown content
 	async function loadMarkdown(path) {
 		try {
 			const res = await fetch(path);
@@ -110,6 +122,7 @@
 		}
 	}
 
+	// Effect to highlight code blocks when markdown is loaded
 	$effect(() => {
 		if (markdownContent) {
 			setTimeout(() => {
@@ -122,63 +135,71 @@
 	});
 </script>
 
-<div class="p-5">
-	<h2 class="mb-5 text-xl font-bold sm:text-2xl md:text-3xl">Certifications</h2>
-	<ul class="mb-8 list-none">
-		{#each posts as { date, title, href, certHref } (title)}
-			<li class="mb-2.5 grid grid-cols-1 items-center gap-2 sm:grid-cols-3">
-				<span class="text-left text-xs text-gray-500">{date}</span>
-				<a
-					{href}
-					onclick={(e) => {
-						e.preventDefault();
-						loadMarkdown(href);
-					}}
-					class="text-left text-sm font-bold text-inherit no-underline hover:underline sm:text-center"
-				>
-					{title}
-				</a>
-				{#if certHref}
+{#if markdownContent}
+	<div class="max-w-2xl rounded-lg p-4 shadow-md sm:p-8">
+		<div class="prose prose-invert max-w-none text-sm sm:text-base">
+			{@html markdownContent}
+		</div>
+	</div>
+{:else}
+	<div class="p-5">
+		<h2 class="mb-5 text-xl font-bold sm:text-2xl md:text-3xl">Certifications</h2>
+		<ul class="mb-8 list-none">
+			{#each posts as { date, title, href, certHref } (title)}
+				<li class="mb-2.5 grid grid-cols-1 items-center gap-2 sm:grid-cols-3">
+					<span class="text-left text-xs text-gray-500">{date}</span>
 					<a
-						href={certHref}
-						target="_blank"
-						rel="noopener noreferrer"
-						class="text-left text-xs text-blue-400 hover:underline sm:text-right"
+						{href}
+						onclick={(e) => {
+							e.preventDefault();
+							loadMarkdown(href);
+						}}
+						class="text-left text-sm font-bold text-inherit no-underline hover:underline sm:text-center"
 					>
-						Certificate
+						{title}
 					</a>
-				{/if}
-			</li>
-		{/each}
-	</ul>
-</div>
-<div class="p-5">
-	<h2 class="mb-5 text-xl font-bold sm:text-2xl md:text-3xl">Course Completion</h2>
-	<ul class="mb-8 list-none">
-		{#each postsCCompletion as { date, title, href, certHref } (title)}
-			<li class="mb-2.5 grid grid-cols-1 items-center gap-2 sm:grid-cols-3">
-				<span class="text-left text-xs text-gray-500">{date}</span>
-				<a
-					{href}
-					onclick={(e) => {
-						e.preventDefault();
-						loadMarkdown(href);
-					}}
-					class="text-left text-sm font-bold text-inherit no-underline hover:underline sm:text-center"
-				>
-					{title}
-				</a>
-				{#if certHref}
+					{#if certHref}
+						<a
+							href={certHref}
+							target="_blank"
+							rel="noopener noreferrer"
+							class="text-left text-xs text-blue-400 hover:underline sm:text-right"
+						>
+							Certificate
+						</a>
+					{/if}
+				</li>
+			{/each}
+		</ul>
+	</div>
+	<div class="p-5">
+		<h2 class="mb-5 text-xl font-bold sm:text-2xl md:text-3xl">Course Completion</h2>
+		<ul class="mb-8 list-none">
+			{#each postsCCompletion as { date, title, href, certHref } (title)}
+				<li class="mb-2.5 grid grid-cols-1 items-center gap-2 sm:grid-cols-3">
+					<span class="text-left text-xs text-gray-500">{date}</span>
 					<a
-						href={certHref}
-						target="_blank"
-						rel="noopener noreferrer"
-						class="text-left text-xs text-blue-400 hover:underline sm:text-right"
+						{href}
+						onclick={(e) => {
+							e.preventDefault();
+							loadMarkdown(href);
+						}}
+						class="text-left text-sm font-bold text-inherit no-underline hover:underline sm:text-center"
 					>
-						Certificate
+						{title}
 					</a>
-				{/if}
-			</li>
-		{/each}
-	</ul>
-</div>
+					{#if certHref}
+						<a
+							href={certHref}
+							target="_blank"
+							rel="noopener noreferrer"
+							class="text-left text-xs text-blue-400 hover:underline sm:text-right"
+						>
+							Certificate
+						</a>
+					{/if}
+				</li>
+			{/each}
+		</ul>
+	</div>
+{/if}

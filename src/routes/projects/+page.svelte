@@ -1,6 +1,4 @@
 <script>
-	import { marked } from 'marked';
-
 	let projectsOngoing = [
 		{
 			techStack: 'AI WebDev',
@@ -33,7 +31,7 @@
 			href: 'https://github.com/bbl-sh/ccraft'
 		},
 		{
-			techStack: 'will be uptechStackd',
+			techStack: 'will be updated',
 			title: 'Making miniGPT',
 			href: 'https://github.com/bbl-sh/making-minigpt'
 		},
@@ -71,7 +69,7 @@
 				rel="noopener noreferrer"
 			>
 				<div
-					class="flex w-full flex-col items-start justify-between space-y-1 sm:flex-row sm:items-center sm:space-y-0 sm:space-x-2"
+					class="flex w-full flex-col items-start justify-between space-y-1 sm:flex-row sm:items-center sm:space-y-0 sm:space-x-2 lg:space-x-4"
 				>
 					<h2 class="text-black dark:text-white">{project.title}</h2>
 					<p class="text-neutral-600 dark:text-neutral-400">
