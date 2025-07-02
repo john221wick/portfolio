@@ -98,7 +98,6 @@
 	let markdownContent = $state(null);
 
 	$effect(() => {
-		// Inorder to load the certificated page if clicked on certifications
 		const unsubscribe = page.subscribe((p) => {
 			if (p.url.pathname === '/certifications') {
 				markdownContent = null;
@@ -107,7 +106,6 @@
 		return unsubscribe;
 	});
 
-	// Function to load markdown content
 	async function loadMarkdown(path) {
 		try {
 			const res = await fetch(path);
@@ -122,7 +120,6 @@
 		}
 	}
 
-	// Effect to highlight code blocks when markdown is loaded
 	$effect(() => {
 		if (markdownContent) {
 			setTimeout(() => {
@@ -133,73 +130,104 @@
 			}, 0);
 		}
 	});
+
+	const certificateIconPath =
+		'M9 4.5a.75.75 0 0 1 .75.75v1.51a3 3 0 0 1 4.5 0V5.25a.75.75 0 0 1 1.5 0v1.51a3 3 0 0 1 4.5 0V5.25a.75.75 0 0 1 1.5 0v1.62c.394.204.774.43.1.666l.006.007c.833.475 1.494 1.252 1.91 2.162.415.91.415 1.92 0 2.83-.416.91-1.077 1.687-1.91 2.162l-.006.007a11.95 11.95 0 0 1-1.11-.666v1.62a.75.75 0 0 1-1.5 0v-1.51a3.001 3.001 0 0 1-4.5 0v1.51a.75.75 0 0 1-1.5 0v-1.51a3 3 0 0 1-4.5 0v1.51a.75.75 0 0 1-1.5 0v-1.62a11.95 11.95 0 0 1-1.11-.666l-.006-.007c-.833-.475-1.494-1.252-1.91-2.162a2.98 2.98 0 0 1 0-2.83c.416-.91 1.077-1.687 1.91-2.162l.006-.007c.336-.192.716-.422 1.11-.666V4.5a.75.75 0 0 1 .75-.75Zm1.5 3.99a1.5 1.5 0 0 0-3 0V15a1.5 1.5 0 0 0 3 0V8.49Zm4.5 0a1.5 1.5 0 0 0-3 0V15a1.5 1.5 0 0 0 3 0V8.49Z';
+
+	const documentIconPath =
+		'M3.75 3A1.75 1.75 0 0 0 2 4.75v14.5A1.75 1.75 0 0 0 3.75 21h12.5A1.75 1.75 0 0 0 18 19.25V7.5L13 3H3.75zM3.5 4.75a.25.25 0 0 1 .25-.25h8.5a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-.75.75h-3.25a.75.75 0 0 1-.75-.75V4.75zm5.75.5h2.5v2.5h-2.5V5.25z';
 </script>
 
 {#if markdownContent}
-	<div class="max-w-2xl rounded-lg p-4 shadow-md sm:p-8">
-		<div class="prose prose-invert max-w-none text-sm sm:text-base">
-			{@html markdownContent}
-		</div>
+	<div class="prose prose-invert mx-auto max-w-2xl rounded-lg p-4 shadow-md sm:p-8">
+		{@html markdownContent}
 	</div>
 {:else}
-	<div class="p-5">
-		<h2 class="mb-5 text-xl font-bold sm:text-2xl md:text-3xl">Certifications</h2>
-		<ul class="mb-8 list-none">
-			{#each posts as { date, title, href, certHref } (title)}
-				<li class="mb-2.5 grid grid-cols-1 items-center gap-2 sm:grid-cols-3">
-					<span class="text-left text-xs text-gray-500">{date}</span>
-					<a
-						{href}
-						onclick={(e) => {
-							e.preventDefault();
-							loadMarkdown(href);
-						}}
-						class="text-left text-sm font-bold text-inherit no-underline hover:underline sm:text-center"
+	<section class="py- 2 mx-auto w-full max-w-3xl px-4 pt-2 pb-2">
+		<div>
+			<h2 class="mb-8 text-xl text-white sm:text-2xl md:text-3xl">Certifications</h2>
+			<div class="flex flex-col space-y-6">
+				{#each posts as { date, title, href, certHref } (title)}
+					<div
+						class="flex w-full flex-col items-start justify-between gap-y-3 sm:flex-row sm:items-center"
 					>
-						{title}
-					</a>
-					{#if certHref}
 						<a
-							href={certHref}
-							target="_blank"
-							rel="noopener noreferrer"
-							class="text-left text-xs text-blue-400 hover:underline sm:text-right"
+							{href}
+							onclick={(e) => {
+								e.preventDefault();
+								loadMarkdown(href);
+							}}
+							class="group flex cursor-pointer items-center gap-x-3 text-left"
 						>
-							Certificate
+							<svg class="h-5 w-5 text-neutral-500" fill="currentColor" viewBox="0 0 20 20">
+								<path d={documentIconPath}></path>
+							</svg>
+							<h2 class="text-neutral-100 group-hover:underline">{title}</h2>
 						</a>
-					{/if}
-				</li>
-			{/each}
-		</ul>
-	</div>
-	<div class="p-5">
-		<h2 class="mb-5 text-xl font-bold sm:text-2xl md:text-3xl">Course Completion</h2>
-		<ul class="mb-8 list-none">
-			{#each postsCCompletion as { date, title, href, certHref } (title)}
-				<li class="mb-2.5 grid grid-cols-1 items-center gap-2 sm:grid-cols-3">
-					<span class="text-left text-xs text-gray-500">{date}</span>
-					<a
-						{href}
-						onclick={(e) => {
-							e.preventDefault();
-							loadMarkdown(href);
-						}}
-						class="text-left text-sm font-bold text-inherit no-underline hover:underline sm:text-center"
+						<div
+							class="flex w-full items-center justify-between gap-x-6 pl-8 sm:w-auto sm:justify-end sm:pl-0"
+						>
+							<span class="min-w-fit text-sm text-neutral-400">{date}</span>
+							{#if certHref !== 'a'}
+								<a
+									href={certHref}
+									target="_blank"
+									rel="noopener noreferrer"
+									class="group flex items-center gap-x-1.5 rounded-full border border-neutral-700 bg-neutral-800/50 px-3 py-1 text-sm text-neutral-300 transition-colors hover:border-neutral-500 hover:bg-neutral-800 hover:text-white"
+								>
+									<svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+										<path d={certificateIconPath}></path>
+									</svg>
+									<span>View</span>
+								</a>
+							{/if}
+						</div>
+					</div>
+				{/each}
+			</div>
+		</div>
+
+		<div class="mt-12">
+			<h2 class="mb-8 text-xl text-white sm:text-2xl md:text-3xl">Course Completion</h2>
+			<div class="flex flex-col space-y-6">
+				{#each postsCCompletion as { date, title, href, certHref } (title)}
+					<div
+						class="flex w-full flex-col items-start justify-between gap-y-3 sm:flex-row sm:items-center"
 					>
-						{title}
-					</a>
-					{#if certHref}
 						<a
-							href={certHref}
-							target="_blank"
-							rel="noopener noreferrer"
-							class="text-left text-xs text-blue-400 hover:underline sm:text-right"
+							{href}
+							onclick={(e) => {
+								e.preventDefault();
+								loadMarkdown(href);
+							}}
+							class="group flex cursor-pointer items-center gap-x-3 text-left"
 						>
-							Certificate
+							<svg class="h-5 w-5 text-neutral-500" fill="currentColor" viewBox="0 0 20 20">
+								<path d={documentIconPath}></path>
+							</svg>
+							<h2 class="text-neutral-100 group-hover:underline">{title}</h2>
 						</a>
-					{/if}
-				</li>
-			{/each}
-		</ul>
-	</div>
+						<div
+							class="flex w-full items-center justify-between gap-x-6 pl-8 sm:w-auto sm:justify-end sm:pl-0"
+						>
+							<span class="min-w-fit text-sm text-neutral-400">{date}</span>
+							{#if certHref}
+								<a
+									href={certHref}
+									target="_blank"
+									rel="noopener noreferrer"
+									class="group flex items-center gap-x-1.5 rounded-full border border-neutral-700 bg-neutral-800/50 px-3 py-1 text-sm text-neutral-300 transition-colors hover:border-neutral-500 hover:bg-neutral-800 hover:text-white"
+								>
+									<svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+										<path d={certificateIconPath}></path>
+									</svg>
+									<span>View</span>
+								</a>
+							{/if}
+						</div>
+					</div>
+				{/each}
+			</div>
+		</div>
+	</section>
 {/if}

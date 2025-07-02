@@ -5,6 +5,9 @@
 	let { children } = $props();
 </script>
 
+<svelte:head>
+	<title>Bhushan</title>
+</svelte:head>
 <div class="flex min-h-screen flex-col bg-[#1e1e1e] text-[#f5f5f5]">
 	<div class="mx-auto w-full max-w-[800px] p-8">
 		<Navbar />

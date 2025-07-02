@@ -1,82 +1,102 @@
 <script>
+	// I've added a 'demoHref' property to the data.
+	// Set it to a URL for a live demo, or null if there isn't one.
 	let projectsOngoing = [
 		{
-			techStack: 'AI WebDev',
 			title: 'Agentic CI/CD',
-			href: 'https://github.com/bbl-sh/ke-automated-ci-cd'
+			href: 'https://github.com/bbl-sh/ke-automated-ci-cd',
+			demoHref: null // No live demo for this one
 		},
 		{
-			techStack: '2025',
 			title: 'Leetcode clone',
-			href: 'data/devops/bash-scripting.md'
+			href: 'https://github.com/bbl-sh',
+			demoHref: 'https://leetcode.com/' // Example demo link
 		},
 		{
-			techStack: '2025',
 			title: 'Building JUDGE0 api via Docker',
-			href: 'https://github.com/bbl-sh/dg-projects'
+			href: 'https://github.com/bbl-sh/dg-projects',
+			demoHref: null
 		},
 		{
-			techStack: '2024',
 			title: 'Github actions and Terraform',
-			href: 'https://github.com/bbl-sh/actions-01'
+			href: 'https://github.com/bbl-sh/actions-01',
+			demoHref: null
 		},
 		{
-			techStack: '2024',
-			title: 'Hugging Face Library',
-			href: 'https://github.com/bbl-sh/literate-invention/tree/main/hugging-face/nlp'
-		},
-		{
-			techStack: '2025',
 			title: 'Building CodeCrafters Clone',
-			href: 'https://github.com/bbl-sh/ccraft'
+			href: 'https://github.com/bbl-sh/ccraft',
+			demoHref: 'https://codecrafters.io/' // Example demo link
 		},
 		{
-			techStack: 'will be updated',
 			title: 'Making miniGPT',
-			href: 'https://github.com/bbl-sh/making-minigpt'
+			href: 'https://github.com/bbl-sh/making-minigpt',
+			demoHref: null
 		},
 		{
-			techStack: '2024',
-			title: 'Training miniGPT over Pytorch Distributed',
-			href: '/post/svelte5/simplicity.md'
-		},
-		{
-			techStack: '2024',
 			title: 'Basics of Golang',
-			href: 'https://github.com/bbl-sh/golang'
-		},
-		{
-			techStack: '2023',
-			title: 'Implementing RDT 3.0, tcp etc protocol',
-			href: 'https://github.com/bbl-sh/computer-networks'
-		},
-		{
-			techStack: '2022',
-			title: 'Basics of pytorch',
-			href: 'https://github.com/bbl-sh/pytorch-basics'
+			href: 'https://github.com/bbl-sh/golang',
+			demoHref: null
 		}
 	];
+
+	// SVG paths for the icons
+	const githubIconPath =
+		'M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z';
+
+	const externalLinkIconPath =
+		'M10.75 8.75a.75.75 0 0 0 0 1.5h1.5v1.5a.75.75 0 0 0 1.5 0v-1.5h1.5a.75.75 0 0 0 0-1.5h-1.5v-1.5a.75.75 0 0 0-1.5 0v1.5h-1.5z M4.5 2A2.5 2.5 0 0 0 2 4.5v9A2.5 2.5 0 0 0 4.5 16h9a2.5 2.5 0 0 0 2.5-2.5V9a.75.75 0 0 0-1.5 0v4.5a1 1 0 0 1-1 1h-9a1 1 0 0 1-1-1v-9a1 1 0 0 1 1-1h4.5a.75.75 0 0 0 0-1.5H4.5z';
 </script>
 
-<section>
-	<h1 class="mb-8 text-2xl font-medium">Projects</h1>
-	<div>
-		{#each projectsOngoing as project, index (project.title)}
-			<a
-				href={project.href}
-				class="mb-5 flex flex-col space-y-1 transition-opacity duration-200 hover:opacity-80"
-				target="_blank"
-				rel="noopener noreferrer"
+<section class="mx-auto w-full max-w-3xl px-2 py-2">
+	<h1 class="mb-8 text-2xl font-medium text-white">Projects</h1>
+	<div class="flex flex-col space-y-6">
+		{#each projectsOngoing as project (project.title)}
+			<div
+				class="flex w-full flex-col items-start justify-between gap-y-3 sm:flex-row sm:items-center"
 			>
-				<div
-					class="flex w-full flex-col items-start justify-between space-y-1 sm:flex-row sm:items-center sm:space-y-0 sm:space-x-2 lg:space-x-4"
+				<a
+					href={project.href}
+					target="_blank"
+					rel="noopener noreferrer"
+					class="group flex items-center gap-x-3 transition-opacity hover:opacity-80"
 				>
-					<h2 class="text-black dark:text-white">{project.title}</h2>
-					<p class="text-neutral-600 dark:text-neutral-400">
-						{project.techStack}
-					</p>
-				</div>
-			</a>
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						class="h-5 w-5 text-neutral-500"
+						viewBox="0 0 16 16"
+						fill="currentColor"
+					>
+						<path d={githubIconPath} />
+					</svg>
+					<h2 class="font-medium text-neutral-100 group-hover:underline">{project.title}</h2>
+				</a>
+
+				{#if project.demoHref}
+					<a
+						href={project.demoHref}
+						target="_blank"
+						rel="noopener noreferrer"
+						class="group flex items-center gap-x-2 rounded-full border border-neutral-700 bg-neutral-800/50 px-3 py-1 text-sm text-neutral-300 transition-colors hover:border-neutral-500 hover:bg-neutral-800 hover:text-white"
+					>
+						<span>View Demo</span>
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							class="h-4 w-4 transition-transform group-hover:translate-x-0.5"
+							viewBox="0 0 20 20"
+							fill="currentColor"
+						>
+							<path d={externalLinkIconPath} />
+						</svg>
+					</a>
+				{/if}
+			</div>
 		{/each}
 	</div>
 </section>
+
+<style>
+	:global(body) {
+		background-color: #111827;
+		color: #e5e7eb;
+	}
+</style>
