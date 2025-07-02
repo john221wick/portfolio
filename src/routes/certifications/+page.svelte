@@ -25,6 +25,12 @@
 			certHref: 'https://drive.google.com/file/d/1ooPebX8Gb6vn6yln84T0I5W0kho_5nmm/view?usp=sharing'
 		},
 		{
+			date: 'April 28, 2025',
+			title: 'Image Processing with python',
+			href: '/test.md',
+			certHref: 'https://drive.google.com/file/d/1pQ8vRAbWERdYcreQrF-LmWoDMji0cjbx/view?usp=sharing'
+		},
+		{
 			date: 'April 9, 2024',
 			title: 'Applied Accelerated Artificial Intelligence (IIT Palakkad) (NVIDIA)',
 			href: '/test.md',

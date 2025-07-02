@@ -20,7 +20,7 @@
 		/>
 	</a>
 	<a
-		href="https://www.linkedin.com/in/bhushan-bharat-51ba4825b/"
+		href="https://www.linkedin.com/in/bhushan-bharat-51ba4825b/ "
 		class="opacity-70 transition-opacity duration-200 hover:opacity-100"
 	>
 		<img
