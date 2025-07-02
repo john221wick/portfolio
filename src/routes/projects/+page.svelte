@@ -2,18 +2,23 @@
 	let projectsOngoing = [
 		{
 			title: 'Agentic CI/CD',
-			href: '#',
+			href: 'https://github.com/john221wick/agentic-ci-cd',
+			demoHref: null
+		},
+		{
+			title: 'Making miniGPT',
+			href: 'https://github.com/john221wick/building-llm',
+			demoHref: null
+		},
+		{
+			title: 'GPU Programming',
+			href: 'https://github.com/john221wick/gpu-programming',
 			demoHref: null
 		},
 		{
 			title: 'Leetcode clone',
-			href: '#',
+			href: 'https://github.com/john221wick/cp-platform',
 			demoHref: '#'
-		},
-		{
-			title: 'Building JUDGE0 api via Docker',
-			href: '#',
-			demoHref: null
 		},
 		{
 			title: 'Github actions and Terraform',
@@ -26,13 +31,13 @@
 			demoHref: '#'
 		},
 		{
-			title: 'Making miniGPT',
+			title: 'Building Pytorch',
 			href: '#',
-			demoHref: null
+			demoHref: '#'
 		},
 		{
-			title: 'Basics of Golang',
-			href: '#',
+			title: 'Building X Golang Projects',
+			href: 'https://github.com/john221wick/golangXprojects',
 			demoHref: null
 		}
 	];
