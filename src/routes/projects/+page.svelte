@@ -8,7 +8,12 @@
 		{
 			title: 'Making miniGPT',
 			href: 'https://github.com/john221wick/building-llm',
-			demoHref: null
+			demoHref: '#'
+		},
+		{
+			title: 'Leetcode clone',
+			href: 'https://github.com/john221wick/cp-platform',
+			demoHref: 'https://6863f83b8526b168054c799e--amazing-tiramisu-776a6a.netlify.app/'
 		},
 		{
 			title: 'GPU Programming',
@@ -16,19 +21,14 @@
 			demoHref: null
 		},
 		{
-			title: 'Leetcode clone',
-			href: 'https://github.com/john221wick/cp-platform',
+			title: 'Building CodeCrafters Clone',
+			href: '#',
 			demoHref: '#'
 		},
 		{
 			title: 'Github actions and Terraform',
 			href: '#',
 			demoHref: null
-		},
-		{
-			title: 'Building CodeCrafters Clone',
-			href: '#',
-			demoHref: '#'
 		},
 		{
 			title: 'Building Pytorch',
