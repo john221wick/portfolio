@@ -1,6 +1,6 @@
 <footer class="mt-20 flex w-full items-center justify-center gap-6 bg-inherit p-4">
 	<a
-		href="https://github.com/bbl-sh"
+		href="https://github.com/john221wick"
 		class="opacity-70 transition-opacity duration-200 hover:opacity-100"
 	>
 		<img
@@ -19,7 +19,10 @@
 			alt="Twitter"
 		/>
 	</a>
-	<a href="#" class="opacity-70 transition-opacity duration-200 hover:opacity-100">
+	<a
+		href="https://www.linkedin.com/in/bhushan-bharat-51ba4825b/"
+		class="opacity-70 transition-opacity duration-200 hover:opacity-100"
+	>
 		<img
 			class="h-[50px] w-[50px] transition-transform duration-300 hover:scale-[1.2]"
 			src="/linked.svg"

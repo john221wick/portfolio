@@ -1,40 +1,38 @@
 <script>
-	// I've added a 'demoHref' property to the data.
-	// Set it to a URL for a live demo, or null if there isn't one.
 	let projectsOngoing = [
 		{
 			title: 'Agentic CI/CD',
-			href: 'https://github.com/bbl-sh/ke-automated-ci-cd',
-			demoHref: null // No live demo for this one
+			href: '#',
+			demoHref: null
 		},
 		{
 			title: 'Leetcode clone',
-			href: 'https://github.com/bbl-sh',
-			demoHref: 'https://leetcode.com/' // Example demo link
+			href: '#',
+			demoHref: '#'
 		},
 		{
 			title: 'Building JUDGE0 api via Docker',
-			href: 'https://github.com/bbl-sh/dg-projects',
+			href: '#',
 			demoHref: null
 		},
 		{
 			title: 'Github actions and Terraform',
-			href: 'https://github.com/bbl-sh/actions-01',
+			href: '#',
 			demoHref: null
 		},
 		{
 			title: 'Building CodeCrafters Clone',
-			href: 'https://github.com/bbl-sh/ccraft',
-			demoHref: 'https://codecrafters.io/' // Example demo link
+			href: '#',
+			demoHref: '#'
 		},
 		{
 			title: 'Making miniGPT',
-			href: 'https://github.com/bbl-sh/making-minigpt',
+			href: '#',
 			demoHref: null
 		},
 		{
 			title: 'Basics of Golang',
-			href: 'https://github.com/bbl-sh/golang',
+			href: '#',
 			demoHref: null
 		}
 	];
