@@ -8,7 +8,7 @@
 		{
 			title: 'Making miniGPT',
 			href: 'https://github.com/john221wick/building-llm',
-			demoHref: '#'
+			demoHref: 'https://building-llm.vercel.app/'
 		},
 		{
 			title: 'Leetcode clone',
