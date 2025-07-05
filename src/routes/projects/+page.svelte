@@ -13,7 +13,7 @@
 		{
 			title: 'Leetcode clone',
 			href: 'https://github.com/john221wick/cp-platform',
-			demoHref: 'https://6863f83b8526b168054c799e--amazing-tiramisu-776a6a.netlify.app/'
+			demoHref: 'https://cp-platform-one.vercel.app/'
 		},
 		{
 			title: 'GPU Programming',
