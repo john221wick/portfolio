@@ -1,24 +1,23 @@
-<div class="flex items-center justify-center p-4 font-sans md:p-8">
+<div class="flex items-center justify-center p-4 md:p-8">
 	<main class="mx-auto w-full max-w-2xl">
-		<section class="w-full space-y-6">
-			<p class="mb-4 text-lg md:text-xl">Hello everyone 👋</p>
+		<section class="w-full space-y-8">
+			<div class="space-y-2">
+				<p class="text-xl text-gray-600 md:text-2xl">Hello everyone 👋</p>
+				<h1 class="text-5xl font-bold text-gray-900 md:text-6xl">I'm Bhushan</h1>
+			</div>
 
-			<h1 class="mb-6 text-4xl font-bold md:text-5xl">Bhushan</h1>
+			<div class="space-y-4 text-lg leading-relaxed text-gray-800">
+				<p>I'm a 4th-year Bachelor of Technology student at Central University of Haryana.</p>
 
-			<div class="space-y-4 text-base leading-relaxed md:text-lg">
 				<p>
-					I'm a student pursuing Bachelor of Technology (4th Year) from Central University Haryana
-				</p>
-
-				<p>
-					Working with MLOps, AI Agents, Building LLM etc<br />
-					and exploring DevOps ecosystems
-				</p>
-				<p class="text-sm md:text-base">
-					Note: This portfolio is under development, some links are not available, I will be
-					updating it soon.
+					I'm currently working with MLOps, building AI Agents and LLMs, and exploring the DevOps
+					ecosystem.
 				</p>
 			</div>
+
+			<p class="text-base text-gray-500">
+				Note: This portfolio is under development. I will be updating links and content soon.
+			</p>
 		</section>
 	</main>
 </div>

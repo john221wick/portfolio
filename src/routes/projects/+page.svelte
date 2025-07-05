@@ -50,8 +50,8 @@
 		'M10.75 8.75a.75.75 0 0 0 0 1.5h1.5v1.5a.75.75 0 0 0 1.5 0v-1.5h1.5a.75.75 0 0 0 0-1.5h-1.5v-1.5a.75.75 0 0 0-1.5 0v1.5h-1.5z M4.5 2A2.5 2.5 0 0 0 2 4.5v9A2.5 2.5 0 0 0 4.5 16h9a2.5 2.5 0 0 0 2.5-2.5V9a.75.75 0 0 0-1.5 0v4.5a1 1 0 0 1-1 1h-9a1 1 0 0 1-1-1v-9a1 1 0 0 1 1-1h4.5a.75.75 0 0 0 0-1.5H4.5z';
 </script>
 
-<section class="mx-auto w-full max-w-3xl px-2 py-2">
-	<h1 class="mb-8 text-2xl font-medium text-white">Projects</h1>
+<section class=" w-full max-w-3xl px-2 py-2">
+	<h1 class="justify-endfont-medium mb-8 text-2xl text-white">Projects</h1>
 	<div class="flex flex-col space-y-6">
 		{#each projectsOngoing as project (project.title)}
 			<div
