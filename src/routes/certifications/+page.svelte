@@ -79,7 +79,7 @@
 			date: 'January, 2024',
 			title: 'CI/CD with Github actions',
 			href: '/test.md',
-			certHref: 'https://drive.google.com/file/d/15gthFFfQG-7AtyK3CKKojysPLN19fSfI/view?usp=sharing'
+			certHref: 'https://drive.google.com/file/d/1htT-SGF-kki7OoOGM35c-v4QK4yc-DWI/view?usp=sharing'
 		},
 		{
 			date: 'August 28, 2023',
