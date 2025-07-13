@@ -8,7 +8,7 @@
 <svelte:head>
 	<title>Bhushan</title>
 </svelte:head>
-<div class="flex min-h-screen flex-col bg-[#1e1e1e] text-[#f5f5f5]">
+<div class="flex min-h-screen flex-col bg-[#1e1e1e] text-white">
 	<div class="mx-auto w-full max-w-[800px] p-8">
 		<Navbar />
 		<main class="flex flex-grow flex-col items-center justify-center text-center">
