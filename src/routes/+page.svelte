@@ -13,16 +13,11 @@
 			</div>
 
 			<div class="space-y-4 text-lg leading-relaxed text-slate-400 md:text-xl">
-				<p>
-					I'm a 4th-year Bachelor of Technology student at the
-					<strong class="font-semibold text-slate-200">Central University of Haryana</strong>.
-				</p>
+				<p>I'm a 4th-year Bachelor of Technology student at the Central University of Haryana</p>
 
 				<p>
-					I'm currently working with <strong class="font-semibold text-slate-200">MLOps</strong>,
-					building <strong class="font-semibold text-slate-200">AI Agents</strong> and
-					<strong class="font-semibold text-slate-200">LLMs</strong>, and exploring the
-					<strong class="font-semibold text-slate-200">DevOps</strong> ecosystem.
+					I'm currently working with MLOps, building AI Agents and LLMs, and exploring the DevOps
+					ecosystem.
 				</p>
 			</div>
 
