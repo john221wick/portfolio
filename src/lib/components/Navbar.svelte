@@ -14,7 +14,7 @@
 	];
 </script>
 
-<nav class="gap-z mb-1 flex w-full items-center justify-center overflow-x-auto p-4 md:gap-10">
+<nav class="mb-1 flex w-full items-center justify-center gap-4 overflow-x-auto p-4 md:gap-10">
 	{#each navLinks as link}
 		<a
 			href={link.path}
